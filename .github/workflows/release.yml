@@ -1,0 +1,169 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  # ================================================================
+  #  Build Windows
+  # ================================================================
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install CMake
+        uses: lukka/get-cmake@latest
+      
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+      
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+          cpack -G NSIS
+          cpack -G ZIP
+      
+      - name: Upload NSIS
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-installer
+          path: build/AxionDigitaverse-*.exe
+      
+      - name: Upload ZIP
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-zip
+          path: build/AxionDigitaverse-*-Windows.zip
+
+  # ================================================================
+  #  Build Linux
+  # ================================================================
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            build-essential \
+            ninja-build \
+            libgl1-mesa-dev \
+            libxrandr-dev
+      
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+          cpack -G DEB
+          cpack -G RPM
+          cpack -G TGZ
+      
+      - name: Upload DEB
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-deb
+          path: build/*.deb
+      
+      - name: Upload RPM
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-rpm
+          path: build/*.rpm
+      
+      - name: Upload TGZ
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-tgz
+          path: build/*.tar.gz
+
+  # ================================================================
+  #  Build macOS
+  # ================================================================
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          brew install cmake ninja
+      
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+          cpack -G DragNDrop
+          cpack -G TGZ
+      
+      - name: Upload DMG
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-dmg
+          path: build/*.dmg
+      
+      - name: Upload TGZ
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-tgz
+          path: build/AxionDigitaverse-*-Darwin.tar.gz
+
+  # ================================================================
+  #  Create Release
+  # ================================================================
+  release:
+    needs: [build-windows, build-linux, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            windows-installer/*
+            windows-zip/*
+            linux-deb/*
+            linux-rpm/*
+            linux-tgz/*
+            macos-dmg/*
+            macos-tgz/*
+          draft: false
+          prerelease: false
+          body: |
+            # Axion Digitaverse v${{ github.ref_name }}
+            
+            Complete blockchain platform with GUI, P2P networking, smart contracts, and real cryptography.
+            
+            ## Changes
+            See [CHANGELOG.md](https://github.com/picode-the-ai-coder/AxionCore/blob/master/CHANGELOG.md) for details.
+            
+            ## Downloads
+            - **Windows**: NSIS installer or ZIP archive
+            - **macOS**: DMG or TAR.GZ
+            - **Linux**: DEB, RPM, or TAR.GZ
+            
+            ## Quick Start
+            1. Download and install for your OS
+            2. Run `AxionDigitaverse` (GUI) or `axion_node` (CLI)
+            3. Wait for sync to complete
+            4. Start transacting!
+            
+            [📖 Full Documentation](https://docs.axiondigitaverse.com)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

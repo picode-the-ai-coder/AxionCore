@@ -1,0 +1,17 @@
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/lib/glfw3.lib
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/include/GLFW/glfw3.h
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/include/GLFW/glfw3native.h
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/lib/cmake/glfw3/glfw3Config.cmake
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/lib/cmake/glfw3/glfw3ConfigVersion.cmake
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/lib/cmake/glfw3/glfw3Targets.cmake
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/lib/cmake/glfw3/glfw3Targets-release.cmake
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/lib/pkgconfig/glfw3.pc
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/bin/AxionDigitaverse.exe
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/bin/axion_node.exe
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/bin/run-node.sh
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/bin/run-node.bat
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/bin/seed-node.sh
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/bin/seed-node.bat
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/docs/README.md
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/docs/DEPLOYMENT.md
+C:/Users/User/source/repos/AxionCore/build/_CPack_Packages/win32/ZIP/AxionDigitaverse-3.4.0-win32/docs/NODE_SETUP.md
