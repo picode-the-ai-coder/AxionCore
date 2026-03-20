@@ -64,6 +64,7 @@ else()
 endif()
 
 # ================================================================
+<<<<<<< HEAD
 #  Axion IDE Library
 # ================================================================
 add_library(axion_ide STATIC
@@ -95,6 +96,8 @@ else()
 endif()
 
 # ================================================================
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
 #  Axion Digitaverse executable
 # ================================================================
 add_executable(AxionDigitaverse
@@ -111,8 +114,11 @@ target_include_directories(AxionDigitaverse PRIVATE
 target_link_libraries(AxionDigitaverse PRIVATE
   glfw
   ${OPENGL_LIBS}
+<<<<<<< HEAD
   axion_avm_v2
   axion_ide
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
   $<$<PLATFORM_ID:Windows>:ws2_32>
   $<$<PLATFORM_ID:Linux>:pthread>
   $<$<PLATFORM_ID:Darwin>:pthread>
@@ -154,6 +160,7 @@ else()
 endif()
 
 # ================================================================
+<<<<<<< HEAD
 #  Advanced AVM v2.0 (for Phase 2)
 # ================================================================
 add_library(axion_avm_v2 STATIC
@@ -437,3 +444,14 @@ message(STATUS "  cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release")
 message(STATUS "  cmake --build . --config Release")
 message(STATUS "  cpack -G ZIP  (or NSIS on Windows)")
 message(STATUS "")
+=======
+#  Install
+# ================================================================
+install(TARGETS AxionDigitaverse DESTINATION bin)
+
+message(STATUS "Axion Digitaverse configured.")
+message(STATUS "  Build type : ${CMAKE_BUILD_TYPE}")
+message(STATUS "  C++ std    : ${CMAKE_CXX_STANDARD}")
+message(STATUS "  ImGui      : will be fetched automatically")
+message(STATUS "  GLFW       : will be fetched automatically")
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503

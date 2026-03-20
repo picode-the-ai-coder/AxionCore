@@ -28,7 +28,10 @@
 // ── Axion backend ──────────────────────────────────────────
 #include "ui_bridge.h"
 #include "tests.h"
+<<<<<<< HEAD
 #include "axion_ide.h"
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
 
 // ── STL ────────────────────────────────────────────────────
 #include <string>
@@ -849,6 +852,7 @@ static void RenderFilesPage(FilesState& st) {
 }
 
 // ================================================================
+<<<<<<< HEAD
 //  Page: Smart Contract IDE
 // ================================================================
 static void RenderIDEPage(axion::AxionIDE* ide) {
@@ -857,6 +861,8 @@ static void RenderIDEPage(axion::AxionIDE* ide) {
 }
 
 // ================================================================
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
 //  Page: Node Status
 // ================================================================
 static void RenderNodePage(NodeState& st) {
@@ -1072,6 +1078,7 @@ int main(int argc, char* argv[]) {
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
+<<<<<<< HEAD
     // ── Initialize IDE ────────────────────────────────────
     axion::init_advanced_avm();
     axion::init_axion_ide();
@@ -1080,6 +1087,8 @@ int main(int argc, char* argv[]) {
         ide->initialize("Axion Smart Contract IDE");
     }
 
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
     // ── Page state ─────────────────────────────────────────
     RegisterState reg_st{};
     LoginState    log_st{};
@@ -1160,7 +1169,10 @@ int main(int argc, char* argv[]) {
             {" $", " Wallet",      2, true },
             {" #", " Files",       3, true },
             {" @", " Node",        4, false},
+<<<<<<< HEAD
             {" ⚙️ ", " IDE",        5, true },
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
         };
 
         ImGui::SetCursorPosY(16);
@@ -1244,7 +1256,10 @@ int main(int argc, char* argv[]) {
             case 2: RenderWalletPage(wal_st);            break;
             case 3: RenderFilesPage(fil_st);             break;
             case 4: RenderNodePage(node_st);             break;
+<<<<<<< HEAD
             case 5: RenderIDEPage(axion::get_ide());     break;
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
         }
 
         ImGui::EndChild();
@@ -1268,10 +1283,13 @@ int main(int argc, char* argv[]) {
     glfwDestroyWindow(window);
     glfwTerminate();
     g_bridge.reset();
+<<<<<<< HEAD
 
     // Shutdown IDE
     axion::shutdown_axion_ide();
     axion::shutdown_advanced_avm();
 
+=======
+>>>>>>> 8d74da462f0f1bf0ba5e8c8729e1834a15296503
     return 0;
 }
